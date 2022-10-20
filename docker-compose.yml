@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    user: vscode
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    command: "npx -y nodemon@2.0.20 --watch './**/*.go' --signal SIGTERM --exec 'go' run main.go"
